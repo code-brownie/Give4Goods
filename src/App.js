@@ -2,7 +2,6 @@ import { useState } from 'react';
 import './App.css';
 import Account from './component/Account';
 import Cart from './component/Cart';
-import Featured from './component/Featured';
 import Footer from './component/Footer';
 import Home from './component/Home';
 import Navbar from './component/Navbar';
@@ -28,13 +27,12 @@ function App() {
         <Alerts alert={alert} />
         <Navbar showAlerts={showAlerts} />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/products" element={<Home />} />
           <Route path="/products" element={<Products />} />
           <Route path="/productsdetails" element={<Productsdetail showAlerts={showAlerts} />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/accounts" element={<Account />} />
           <Route path="/profile" element={<Profile />} />
-          <Route path="/featured" element={<Featured />} />
           <Route path="/about" element={<About />} />
         </Routes>
         <Footer />

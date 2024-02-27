@@ -9,7 +9,7 @@ const Home = () => {
             <div className="Col-2">
                 <h1>Join the<br /> ReNewCycle!</h1>
                 <p>Together, we can create a sustainable future, one purchase and donation at a time.</p>
-                <Link to="/featured">
+                <Link to="/products">
                 <button className="learn-more">
                     <span className="circle" aria-hidden="true">
                     <span className="icon arrow"></span>

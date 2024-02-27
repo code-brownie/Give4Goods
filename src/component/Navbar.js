@@ -12,7 +12,6 @@ const Navbar = (props) => {
         showAlerts("Logged out successfully", "success");
         handleLogout();
         navigate('/')
-
     };
     return (
         <>
