@@ -1,0 +1,85 @@
+# Dependency directories
+node_modules/
+
+# Environment variables
+.env
+
+# Logs
+logs
+*.log
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Folder config file
+.DS_Store
+Desktop.ini
+ehthumbs.db
+Thumbs.db
+
+# Visual Studio Code settings
+.vscode/
+
+# IDE settings
+.idea/
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# Node.js generated files
+__tests__/fixtures/
+__tests__/coverage/
+__tests__/test-results/
+
+# Jest testing library
+jest-debug.log
+npm-debug.log
+yarn-error.log
+coverage/
+
+# Output of 'npm pack'
+*.tgz
+
+# Yarn Integrity file
+.yarn-integrity
+
+# Grunt intermediate storage (https://gruntjs.com/creating-plugins#storing-task-files)
+.grunt
+
+# TypeScript config
+tsconfig*.json
+
+# Webpack config
+webpack.config.js
+
+# Parcel config
+.parcel-cache/
+
+# Next.js build output
+.next/
+
+# Nuxt.js build / generate output
+.nuxt/
+dist/
+
+# Meteor
+.local/
+.meteor/
+
+# Electron
+node_modules/electron/dist/
+node_modules/electron/.webpack/
+node_modules/electron/main
+!node_modules/electron/main/index.js
+
+# Bower
+bower_components/
+
+# Le

@@ -1,0 +1,79 @@
+.navbar {
+    display: flex;
+    align-items: center;
+    padding: 20px 0px;  
+}
+
+.header {
+    background: radial-gradient(#fff, #ffd6d6);
+}
+
+nav {
+    flex: 1;
+    text-align: right;
+}
+
+nav ul {
+    display: inline-block;
+    list-style-type: none;
+}
+
+nav ul li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+a {
+    font-family: 'Baloo Bhai 2', cursive;
+    text-decoration: none;
+    color: #544d4d;
+    font-weight:bold;
+}
+.cart-icon{
+    position:relative;
+    top:-10px;
+}
+.Container {
+    max-width: 1300px;
+    margin: auto;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+
+/* hover  */
+
+.list-item::after {
+    content: '';
+    width: 0%;
+    height: 2px;
+    background: #f44336;
+    display: block;
+    margin: auto;
+}
+
+.list-item:hover::after {
+    width: 100%;
+    transition: 0.3s;
+}
+
+/* button  */
+
+.button-style {
+    display: inline-block;
+    padding: 1px 10px;
+    background-color: #ff523b;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    font-family: 'Baloo Bhai 2', cursive;
+    font-weight:bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .button-style:hover {
+    background-color: #ffffff;
+    color: #544d4d;
+  }

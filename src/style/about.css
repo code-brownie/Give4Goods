@@ -1,0 +1,86 @@
+/* Main Content */
+.main-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  /* Section */
+  .section {
+    margin-bottom: 30px;
+  }
+  
+  /* Section Title */
+  .section-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+    text-decoration: underline;
+  }
+  
+  /* Section Text */
+  .section-text {
+    font-size: 16px;
+    color: #666;
+    line-height: 1.5;
+    margin-bottom: 10px;
+  }
+  
+  /* Subsection */
+  .subsection {
+    margin-bottom: 20px;
+  }
+  
+  /* Subsection Title */
+  .subsection-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #555;
+    margin-bottom: 10px;
+  }
+  
+  /* Subsection Text */
+  .subsection-text {
+    font-size: 16px;
+    color: #777;
+    line-height: 1.5;
+    margin-bottom: 10px;
+  }
+  
+  /* Subsection List */
+  .subsection-list {
+    list-style-type: disc;
+    margin-left: 20px;
+    margin-bottom: 10px;
+  }
+  
+  /* Subsection List Item */
+  .subsection-item {
+    font-size: 16px;
+    color: #777;
+    line-height: 1.5;
+  }
+  
+  /* Team List */
+  .team-list {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+  
+  /* Team Member */
+  .team-member {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 15px;
+    margin-right: 15px;
+    padding: 5px 10px;
+    background-color: #f2f2f2;
+    border-radius: 5px;
+  }

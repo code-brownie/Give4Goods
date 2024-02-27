@@ -1,0 +1,51 @@
+.profile-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 40px;
+    border-radius: 10px;
+}
+
+.profile-header {
+    text-align: center;
+}
+
+.profile-picture {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.profile-name {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.profile-email {
+    font-size: 16px;
+    color: #888;
+}
+
+.profile-body {
+    margin-top: 40px;
+}
+
+.profile-section {
+    margin-bottom: 30px;
+}
+
+.section-title {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.coins-earned {
+    font-size: 36px;
+    color: #444;
+    text-align: center;
+}
+
+.coins-earned::after {
+    content: " Coins";
+}
