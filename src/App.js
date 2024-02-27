@@ -27,7 +27,7 @@ function App() {
         <Alerts alert={alert} />
         <Navbar showAlerts={showAlerts} />
         <Routes>
-          <Route path="/products" element={<Home />} />
+          <Route path="/" element={<Home />} />
           <Route path="/products" element={<Products />} />
           <Route path="/productsdetails" element={<Productsdetail showAlerts={showAlerts} />} />
           <Route path="/cart" element={<Cart />} />
