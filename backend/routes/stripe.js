@@ -29,8 +29,8 @@ router.post('/stripe', async (req, res) => {
       payment_method_types: ['card'],
       mode: 'payment',
       line_items: lineItems,
-      success_url: 'http://localhost:3000/api/auth/processed',
-      cancel_url: 'http://localhost:3000/cancel',
+      success_url: 'https://give4-goods.vercel.app/api/auth/processed',
+      cancel_url: 'https://give4-goods.vercel.app/cancel',
     });
 
     res.json({ url: session.url, success: true });
