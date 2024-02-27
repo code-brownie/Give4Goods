@@ -13,7 +13,6 @@ import Alerts from './component/Alerts';
 import { CartProvider } from './component/ContexReducer';
 import About from './component/About';
 import Profile from './component/Profile';
-import Payment from './component/Payment';
 
 function App() {
   const [alert, setAlerts] = useState(null);
@@ -37,7 +36,6 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/featured" element={<Featured />} />
           <Route path="/about" element={<About />} />
-          <Route path="/payment" element={<Payment />} />
         </Routes>
         <Footer />
       </>

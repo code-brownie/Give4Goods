@@ -21,7 +21,7 @@ const Products = () => {
         <>
             <h2 className="title">All Products</h2>
             <div className="l">
-                {shopItems !== []
+                {shopItems != []
                     ?
                     shopItems.map((data) => {
                         return (
