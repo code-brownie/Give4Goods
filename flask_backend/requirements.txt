@@ -17,7 +17,8 @@ pandas
 
 ipython  
 psutil  
-thop>=0.1.1  absl-py==2.1.0
+thop>=0.1.1 
+absl-py==2.1.0
 anyio==4.3.0
 argon2-cffi==23.1.0
 argon2-cffi-bindings==21.2.0
