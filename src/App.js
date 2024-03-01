@@ -2,7 +2,6 @@ import { useState } from 'react';
 import './App.css';
 import Account from './component/Account';
 import Cart from './component/Cart';
-import Footer from './component/Footer';
 import Home from './component/Home';
 import Navbar from './component/Navbar';
 import Products from './component/Products';
@@ -35,7 +34,6 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/about" element={<About />} />
         </Routes>
-        <Footer />
       </>
     </CartProvider>
   );

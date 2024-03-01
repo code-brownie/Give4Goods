@@ -117,3 +117,30 @@ h4 {
     border: 2px solid #ff523b;
     /* overflow: hidden; */
 }
+/* for loader in the product section */
+.loader-parent{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20vh;
+}
+.loader {
+    width: 48px;
+    height: 48px;
+    border: 5px solid #0b0b0b;
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}

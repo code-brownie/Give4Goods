@@ -8,23 +8,25 @@ const Cart = () => {
 
   if (data.length === 0) {
     return (
-      <div>The cart is Empty!</div>
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '85vh', margin: 0, textAlign: 'center',flexFlow:'column' }}>
+        <img src='./images/Cart-logo.png' alt='Cart is empty' style={{ maxWidth: '20%', height: 'auto' }} />
+        <p>Your cart is currently empty please add some product to view them here!!!.</p> 
+      </div>
+
     );
   }
   const handlePayment = async () => {
     try {
-      const response = await fetch('https://give4goods.onrender.com/api/auth/stripe', {
+       const response = await fetch('https://give4goods.onrender.com/api/auth/stripe', {
+      // const response = await fetch('http://localhost:5000/api/auth/stripe', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(data)
       });
-      console.log(data)
       const Data = await response.json();
       window.location = (Data.url)
-      if (!Data.success)
-        alert("Your payment has been successfull");
     } catch (error) {
       console.log(error.message);
     }
@@ -46,7 +48,7 @@ const Cart = () => {
         <tbody>
           {data.map((item, index) => {
             return (
-              
+
               <tr key={item.id}>
                 <td>
                   <div className="cart-info">
