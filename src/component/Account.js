@@ -7,6 +7,7 @@ const Account = () => {
     const { handleLogin, handleSignIn, showMessage_success, showMessage_danger } = useContext(AuthContext);
     const Navigate = useNavigate();
     const [isLoginFormVisible, setIsLoginFormVisible] = useState(true);
+    const [loading, setLoading] = useState(false);
     // for Registering Details
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
@@ -18,6 +19,7 @@ const Account = () => {
     const handleSignUp = async (e) => {
         e.preventDefault();
         try {
+            setLoading(true);
             const response = await fetch('https://give4goods.onrender.com/api/auth/register', {
             // const response = await fetch('http://localhost:5000/api/auth/register', {
                 method: 'POST',
@@ -41,14 +43,19 @@ const Account = () => {
                 Navigate('/products')
             }
         } catch (error) {
+            showMessage_danger('Error Occured');
             console.log(error);
+        } finally {
+            setLoading(false);
         }
     };
 
     const handleLoginsubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch('https://give4goods.onrender.com/api/auth/login', {
+            setLoading(true)
+            // const response = await fetch('http://localhost:5000/api/auth/login', {
+                const response = await fetch('https://give4goods.onrender.com/api/auth/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -72,7 +79,10 @@ const Account = () => {
                 showMessage_danger('Invalid details');
             }
         } catch (error) {
+            showMessage_danger('Error occured');
             console.log(error);
+        } finally {
+            setLoading(false);
         }
     };
 
@@ -112,9 +122,13 @@ const Account = () => {
                                         onChange={(e) => setLoginPassword(e.target.value)}
                                         placeholder="Password"
                                     />
-                                    <button type="submit" className="btn">
-                                        Login
-                                    </button>
+                                    {loading ? (
+                                        <p className='loader-login'><span className="loader"></span></p>
+                                    ) : (
+                                        <button type="submit" className="btn">
+                                            Login
+                                        </button>
+                                    )}
                                 </form>
                             ) : (
                                 <form id="register_form" onSubmit={handleSignUp}>
@@ -136,9 +150,13 @@ const Account = () => {
                                         onChange={(e) => setPassword(e.target.value)}
                                         placeholder="Password"
                                     />
-                                    <button type="submit" className="btn">
-                                        Register
-                                    </button>
+                                    {loading ? (
+                                        <p className='loader-login'><span className="loader"></span></p>
+                                    ) : (
+                                        <button type="submit" className="btn">
+                                            Register
+                                        </button>
+                                    )}
                                 </form>
                             )}
                         </div>
