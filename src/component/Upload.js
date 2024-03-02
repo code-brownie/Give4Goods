@@ -19,7 +19,8 @@ function Upload(props) {
         formData.append('image', selectedFile);
 
         try {
-            const response = await fetch('http://localhost:8000/process_image', {
+            // const response = await fetch('http://localhost:8000/process_image', {
+            const response = await fetch('https://give4goods-python-server.onrender.com/process_image', {
                 method: 'POST',
                 body: formData,
             });
