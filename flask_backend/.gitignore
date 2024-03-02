@@ -10,5 +10,4 @@ __pycache__/
 *.pyo
 *.pyd
 
-# Ignore yolov5 model file
-yolov5s.pt
+
