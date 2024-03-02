@@ -1,10 +1,9 @@
 import argparse
 import io
-import time
 from PIL import Image
 
 import torch
-from flask import Flask, render_template, request, redirect, jsonify
+from flask import Flask, request,jsonify
 from flask_cors import CORS
 
 app = Flask(__name__)
@@ -19,12 +18,8 @@ def process_image():
     image_file = request.files['image']
     img_bytes = image_file.read()
     img = Image.open(io.BytesIO(img_bytes))
-    start_time = time.time()
     results = model([img])
-    end_time = time.time()
-    processing_time = end_time - start_time
     data = results.pandas().xyxy[0].to_json(orient="records")
-    print(processing_time)
     return data;
 
 if __name__ == "__main__":
