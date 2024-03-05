@@ -7,8 +7,8 @@ const Products = () => {
     const [loading, setLoading] = useState(true);
     const loadData = async () => {  
         try {
-            //  let response = await fetch('https://give4goods.onrender.com/api/auth/productItems', {
-            let response = await fetch('http://localhost:5000/api/auth/productItems', {
+             let response = await fetch('https://give4goods.onrender.com/api/auth/productItems', {
+            //let response = await fetch('http://localhost:5000/api/auth/productItems', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
