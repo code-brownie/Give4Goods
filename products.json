@@ -1,0 +1,66 @@
+[
+    {
+      "_id": { "$oid": "65e60b6dd3a1907410938266" },
+      "name": "Notebook",
+      "price": 150,
+      "category": "Education",
+      "image": "https://m.media-amazon.com/images/I/51gJYS2s-eL._SL1100_.jpg",
+      "description": "A notebook for writing notes and keeping track of tasks.",
+      "features": ["80 GSM paper quality", "200 pages", "A5 size"]
+    },
+    {
+      "_id": { "$oid": "65e60b6dd3a1907410938267" },
+      "name": "Refrigerator",
+      "price": 24000,
+      "category": "Home & Kitchen",
+      "image": "https://m.media-amazon.com/images/I/61GnCWqoz9L._SL1500_.jpg",
+      "description": "A refrigerator for storing food and beverages.",
+      "features": ["Capacity: 190 liters", "Energy efficiency: 4 star", "Frost-free operation"]
+    },
+    {
+      "_id": { "$oid": "65e60b6dd3a1907410938268" },
+      "name": "Chair",
+      "price": 700,
+      "category": "Home",
+      "image": "https://m.media-amazon.com/images/I/31MT+v2ReYL.jpg",
+      "description": "A comfortable chair for seating.",
+      "features": ["Material: Wooden", "Color: Brown", "Weight capacity: 120 kg"]
+    },
+    {
+      "_id": { "$oid": "65e60b6dd3a1907410938269" },
+      "name": "Television",
+      "price": 16000,
+      "category": "Home",
+      "image": "https://m.media-amazon.com/images/I/41WE9ZGEC4L._SX300_SY300_QL70_FMwebp_.jpg",
+      "description": "A television for entertainment.",
+      "features": ["Screen size: 32 inches", "Resolution: HD Ready", "Connectivity: HDMI, USB"]
+    },
+    {
+      "_id": { "$oid": "65e60b6dd3a190741093826a" },
+      "name": "Laptop",
+      "price": 60000,
+      "category": "Electronics",
+      "image": "https://m.media-amazon.com/images/I/61RWQqTjSZL._SL1500_.jpg",
+      "description": "A high-performance laptop for work and entertainment.",
+      "features": ["Processor: Intel Core i7", "RAM: 8GB", "Storage: 512GB SSD"]
+    },
+    {
+      "_id": { "$oid": "65e60b6dd3a190741093826b" },
+      "name": "Water Bottle",
+      "price": 400,
+      "category": "Home & Kitchen",
+      "image": "https://m.media-amazon.com/images/I/51E-ISZ5pLL._SL1440_.jpg",
+      "description": "A water bottle for carrying water on the go.",
+      "features": ["Capacity: 1 liter", "Material: High-grade plastic", "Leak-proof design"]
+    },
+    {
+      "_id": { "$oid": "65e60b6dd3a190741093826c" },
+      "name": "Cell phone",
+      "price": 30000,
+      "category": "Electronics",
+      "image": "https://m.media-amazon.com/images/I/418PZ2AjVKL._SX300_SY300_QL70_FMwebp_.jpg",
+      "description": "A smartphone for communication and entertainment.",
+      "features": ["Display: 6.5 inches", "Camera: 48MP", "Battery: 5000mAh"]
+    }
+  ]
+  

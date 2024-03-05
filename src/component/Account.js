@@ -20,8 +20,7 @@ const Account = () => {
         e.preventDefault();
         try {
             setLoading(true);
-            const response = await fetch('https://give4goods.onrender.com/api/auth/register', {
-            // const response = await fetch('http://localhost:5000/api/auth/register', {
+            const response = await fetch('http://localhost:5000/api/auth/register', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -36,6 +35,8 @@ const Account = () => {
             if (data.success) {
                 showMessage_success('SignedUp Successfully');
                 localStorage.setItem('authToken', data.authToken);
+                localStorage.setItem('username', name);
+                localStorage.setItem('email', email);
                 handleSignIn();
                 setEmail('');
                 setName('');
@@ -48,15 +49,14 @@ const Account = () => {
         } finally {
             setLoading(false);
         }
-    };
+    };    
 
     const handleLoginsubmit = async (e) => {
         e.preventDefault();
         try {
-            setLoading(true)
-            // const response = await fetch('http://localhost:5000/api/auth/login', {
-                const response = await fetch('https://give4goods.onrender.com/api/auth/login', {
-                method: 'POST',
+            setLoading(true);
+            const response = await fetch('http://localhost:5000/api/auth/login', {
+                method: 'POST', 
                 headers: {
                     'Content-Type': 'application/json',
                 },
@@ -70,10 +70,12 @@ const Account = () => {
             setLoginPassword('');
             if (data.success) {
                 showMessage_success('Logged In successfully');
+                localStorage.setItem('authToken', data.authToken);
+                localStorage.setItem('username', data.username); // Update username
+                localStorage.setItem('email', data.email); // Update email
                 handleLogin();
                 setIsLoginFormVisible(false);
-                Navigate('/products');
-                localStorage.setItem('authToken', data.authToken);
+                Navigate('/products')
             } else {
                 console.log(data.error);
                 showMessage_danger('Invalid details');
@@ -85,6 +87,8 @@ const Account = () => {
             setLoading(false);
         }
     };
+    
+    
 
     const Register = () => {
         setIsLoginFormVisible(false);

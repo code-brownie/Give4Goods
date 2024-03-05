@@ -11,8 +11,8 @@ const Navbar = (props) => {
     const handleLogoutclick = () => {
         showAlerts("Logged out successfully", "success");
         handleLogout();
-        navigate('/')
     };
+    
     return (
         <>
             <div className="header">
@@ -39,19 +39,14 @@ const Navbar = (props) => {
                                             <Link to="/profile">Profile</Link>
                                         </li>
                                         <li className="list-item" style={{ cursor: 'pointer' }} onClick={handleLogoutclick}>
-                                            Logout
+                                            <Link Link to="/">Logout</Link>
                                         </li>
                                     </>
                                 ) : (
                                     <>
                                         <li>
                                             <Link to="/accounts">
-                                                <button className="button-style">Login</button>
-                                            </Link>
-                                        </li>
-                                        <li>
-                                            <Link to="/accounts">
-                                                <button className="button-style">SignUp</button>
+                                                <button className="button-style">Login/SignUp</button>
                                             </Link>
                                         </li>
                                     </>

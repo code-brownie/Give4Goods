@@ -23,12 +23,14 @@ nav ul li {
     margin-right: 20px;
 }
 
-a {
+a, .list-item{
     font-family: 'Baloo Bhai 2', cursive;
     text-decoration: none;
     color: #544d4d;
     font-weight:bold;
-}
+} 
+
+
 .cart-icon{
     position:relative;
     top:-10px;
