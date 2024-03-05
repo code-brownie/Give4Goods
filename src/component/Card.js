@@ -44,7 +44,7 @@ const Card = (props) => {
               <i key={index + rating} className="fa-regular fa-star"></i>
             ))}
           </div>
-          <button className="btn btn-primary mt-3" onClick={() => {}}>Add to Cart</button>
+          {/* <button className="btn btn-primary mt-3" onClick={() => {}}>Add to Cart</button> */}
         </div>
       </div>
     </div>
