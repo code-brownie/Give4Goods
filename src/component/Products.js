@@ -5,10 +5,10 @@ import Card from './Card';
 const Products = () => {
     const [shopItems, setshopItems] = useState([]);
     const [loading, setLoading] = useState(true);
-    const loadData = async () => {  
+    const loadData = async () => {
         try {
-             let response = await fetch('https://give4goods.onrender.com/api/auth/productItems', {
-            //let response = await fetch('http://localhost:5000/api/auth/productItems', {
+            let response = await fetch('https://give4goods.onrender.com/api/auth/productItems', {
+                // let response = await fetch('http://localhost:5000/api/auth/productItems', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

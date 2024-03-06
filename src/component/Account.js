@@ -21,7 +21,7 @@ const Account = () => {
         try {
             setLoading(true);
             const response = await fetch('https://give4goods.onrender.com/api/auth/register', {
-                // const response = await fetch('http://localhost:5000/api/auth/register', {
+            // const response = await fetch('http://localhost:5000/api/auth/register', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -38,6 +38,7 @@ const Account = () => {
                 localStorage.setItem('authToken', data.authToken);
                 localStorage.setItem('username', name);
                 localStorage.setItem('email', email);
+                localStorage.setItem('UserId', data.userId);
                 handleSignIn();
                 setEmail('');
                 setName('');
@@ -57,7 +58,7 @@ const Account = () => {
         try {
             setLoading(true);
             const response = await fetch('https://give4goods.onrender.com/api/auth/login', {
-                // const response = await fetch('http://localhost:5000/api/auth/login', {
+            // const response = await fetch('http://localhost:5000/api/auth/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -68,13 +69,15 @@ const Account = () => {
                 }),
             });
             const data = await response.json();
+            console.log("The data is ", data);
             setLoginEmail('');
             setLoginPassword('');
             if (data.success) {
                 showMessage_success('Logged In successfully');
                 localStorage.setItem('authToken', data.authToken);
-                localStorage.setItem('username', data.username); // Update username
-                localStorage.setItem('email', data.email); // Update email
+                localStorage.setItem('username', data.username);
+                localStorage.setItem('email', data.email);
+                localStorage.setItem('UserId', data.userId);
                 handleLogin();
                 setIsLoginFormVisible(false);
                 Navigate('/products')
@@ -89,7 +92,7 @@ const Account = () => {
             setLoading(false);
         }
     };
-    
+
     const Register = () => {
         setIsLoginFormVisible(false);
     };

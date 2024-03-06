@@ -21,24 +21,24 @@ const Productsdetail = (props) => {
     const price = new URLSearchParams(location.search).get('price');
     const description = new URLSearchParams(location.search).get('description');
     const features = new URLSearchParams(location.search).get('features');
-
+    const userId = localStorage.getItem('UserId');
     const featuresArray = features ? features.split(',') : [];
 
     const handleAddToCart = async () => {
         const finalPrice = parseInt(price) * Qty;
-        let food = null;
+        let products = null;
         for (const item of data) {
             if (item.id === id) {
-                food = item;
+                products = item;
                 break;
             }
         }
-        if (food) {
+        if (products) {
             await dispatch({ type: 'UPDATE', id: id, price: finalPrice, Qty: Qty });
             props.showAlerts("Item Added successfully", "success");
             handleFoundProduct(false);
         } else {
-            await dispatch({ type: 'ADD', id: id, name: name, price: finalPrice, img: imageURL, Qty: Qty });
+            await dispatch({ type: 'ADD', id: id, name: name, price: finalPrice, img: imageURL, Qty: Qty, userId: userId });
             props.showAlerts("Item added successfully", "success");
             handleFoundProduct(false);
         }
@@ -48,7 +48,7 @@ const Productsdetail = (props) => {
         <>
             <div className="small-container single-product">
                 <div className="Row">
-                <div className="Col-2">
+                    <div className="Col-2">
                         <img src={imageURL} style={{ height: '400px', width: 'auto' }} alt="gallery" />
                     </div>
                     <div className="Col-2">
