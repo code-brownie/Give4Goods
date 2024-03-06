@@ -38,7 +38,7 @@ body('password', 'Password should be min of 5 character').isLength({ min: 5 })],
             }
             const authToken = jwt.sign(data, JWT_SECRECT);
             // console.log(authToken);
-            res.json({ authToken: authToken, success: true });
+            res.json({ authToken: authToken, success: true, userId: user.id });
         } catch (error) {
             console.error(error.message);
             res.status(500).send("Internal Server Error occured");
@@ -76,7 +76,7 @@ router.post('/login', [
             }
 
             const authToken = jwt.sign(data, JWT_SECRECT);
-            res.json({ authToken: authToken, username: user.name, email: user.email, success: true });
+            res.json({ authToken: authToken, username: user.name, email: user.email, success: true, userId: user.id });
         } catch (error) {
             console.error(error.message);
             res.status(500).send("Internal Server Error occured");

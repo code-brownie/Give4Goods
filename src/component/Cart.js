@@ -2,23 +2,27 @@ import React from 'react';
 import '../style/cart.css';
 import { useDispatchCart, useCart } from './ContexReducer';
 
+
+
 const Cart = () => {
-  let data = useCart();
-  let dispatch = useDispatchCart();
+  const userId = localStorage.getItem("UserId");
+  console.log(userId);
+  const data = useCart(userId);
+  const dispatch = useDispatchCart();
 
   if (data.length === 0) {
     return (
-      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '85vh', margin: 0, textAlign: 'center',flexFlow:'column' }}>
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '85vh', margin: 0, textAlign: 'center', flexFlow: 'column' }}>
         <img src='./images/Cart-logo.png' alt='Cart is empty' style={{ maxWidth: '20%', height: 'auto' }} />
-        <p>Your cart is currently empty please add some product to view them here!!!.</p> 
+        <p>Your cart is currently empty please add some product to view them here!!!.</p>
       </div>
 
     );
   }
   const handlePayment = async () => {
     try {
-       const response = await fetch('https://give4goods.onrender.com/api/auth/stripe', {
-      // const response = await fetch('http://localhost:5000/api/auth/stripe', {
+      const response = await fetch('https://give4goods.onrender.com/api/auth/stripe', {
+        // const response = await fetch('http://localhost:5000/api/auth/stripe', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
