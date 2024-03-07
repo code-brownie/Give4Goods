@@ -18,6 +18,9 @@ def process_image():
     if request.method == "OPTIONS":
         # Respond to OPTIONS preflight request
         response = jsonify({"status": "ok"})
+        response.headers.add(
+            "Access-Control-Allow-Origin", "https://give4-goods.vercel.app"
+        )
         response.headers.add("Access-Control-Allow-Origin", "*")
         response.headers.add("Access-Control-Allow-Methods", "POST")
         response.headers.add("Access-Control-Allow-Headers", "Content-Type")
@@ -41,13 +44,20 @@ def process_image():
         print(processing_time)
 
         response = jsonify(data)
+
+        response.headers.add(
+            "Access-Control-Allow-Origin", "https://give4-goods.vercel.app"
+        )
+
         response.headers.add("Access-Control-Allow-Origin", "*")
+
         print(response)
         return response, 200
 
     except Exception as e:
         print(f"An error occurred: {str(e)}")
         return jsonify({"error": "Internal server error"}), 500
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Flask app exposing yolov5 models")
