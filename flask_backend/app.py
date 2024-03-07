@@ -22,7 +22,7 @@ model.eval()
 def process_image():
     try:
         if "image" not in request.files:
-            return jsonify({"error": "No image file provided"}), 400  # 400 Bad Request
+            return jsonify({"error": "No image file provided"}), 400
 
         image_file = request.files["image"]
         img_bytes = image_file.read()
@@ -36,10 +36,11 @@ def process_image():
         data = results.pandas().xyxy[0].to_json(orient="records")
         print(processing_time)
 
-        return jsonify(data), 200  # 200 OK
+        return jsonify(data), 200
 
     except Exception as e:
-        return jsonify({"error": str(e)}), 500  # 500 Internal Server Error
+        print(f"An error occurred: {str(e)}")
+        return jsonify({"error": "Internal server error"}), 500
 
 
 if __name__ == "__main__":
