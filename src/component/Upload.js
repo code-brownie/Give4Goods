@@ -20,7 +20,7 @@ function Upload(props) {
 
         try {
             // const response = await fetch('http://localhost:8000/process_image', {
-            const response = await fetch('my-object-model.fchtgdbgevh6cqga.southindia.azurecontainer.io/process_image', {
+            const response = await fetch('http://my-object-model.fchtgdbgevh6cqga.southindia.azurecontainer.io/process_image', {
                 method: 'POST',
                 body: formData,
             });
