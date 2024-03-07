@@ -10,7 +10,20 @@ from flask_cors import CORS
 app = Flask(__name__)
 
 # Enable CORS for the specified origin
-CORS(app, origins="https://give4-goods.vercel.app", supports_credentials=True)
+CORS(
+    app,
+    origins="https://give4-goods.vercel.app",
+    supports_credentials=True,
+    methods=["POST"],
+    allow_headers=["Content-Type"],
+)
+# CORS(
+#     app,
+#     origins="http://localhost:3000",
+#     supports_credentials=True,
+#     methods=["POST"],
+#     allow_headers=["Content-Type"],
+# )
 
 
 torch.hub._validate_not_a_forked_repo = lambda a, b, c: True
@@ -33,10 +46,17 @@ def process_image():
         end_time = time.time()
 
         processing_time = end_time - start_time
-        data = results.pandas().xyxy[0].to_json(orient="records")
+        data = results.pandas().xyxy[0].to_dict(orient="records")
+        print(data)
         print(processing_time)
 
-        return jsonify(data), 200
+        response = jsonify(data)
+        # response.headers.add("Access-Control-Allow-Origin", "http://localhost:3000")
+        response.headers.add("Access-Control-Allow-Origin", "https://give4-goods.vercel.app")
+        response.headers.add("Access-Control-Allow-Methods", "POST")
+        response.headers.add("Access-Control-Allow-Headers", "Content-Type")
+        print(response)
+        return response, 200
 
     except Exception as e:
         print(f"An error occurred: {str(e)}")
