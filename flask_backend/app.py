@@ -8,7 +8,7 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, origins="https://give4-goods.vercel.app")
 
 # Function to load the YOLOv5 model
 def load_yolov5_model():
@@ -38,12 +38,7 @@ def process_image():
     data = results.pandas().xyxy[0].to_json(orient="records")
     print(processing_time)
 
-    # Add CORS headers to the response
-    response = jsonify(data)
-    response.headers.add('Access-Control-Allow-Origin', '*')
-    response.headers.add('Access-Control-Allow-Methods', 'POST')
-    response.headers.add('Access-Control-Allow-Headers', 'Content-Type')
-    return response
+    return jsonify(data)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Flask app exposing yolov5 models")
