@@ -37,7 +37,13 @@ def process_image():
     processing_time = end_time - start_time
     data = results.pandas().xyxy[0].to_json(orient="records")
     print(processing_time)
-    return data;
+
+    # Add CORS headers to the response
+    response = jsonify(data)
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    response.headers.add('Access-Control-Allow-Methods', 'POST')
+    response.headers.add('Access-Control-Allow-Headers', 'Content-Type')
+    return response
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Flask app exposing yolov5 models")
