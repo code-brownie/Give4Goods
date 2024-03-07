@@ -9,15 +9,6 @@ from flask_cors import CORS
 
 app = Flask(__name__)
 
-# Enable CORS for the specified origin
-CORS(
-    app,
-    resources={r"/process_image": {"origins": "https://give4-goods.vercel.app"}},
-    supports_credentials=True,
-    methods=["POST", "OPTIONS"],
-    allow_headers=["Content-Type"],
-)
-
 torch.hub._validate_not_a_forked_repo = lambda a, b, c: True
 model = torch.hub.load("ultralytics/yolov5", "yolov5s", pretrained=True)
 model.eval()
