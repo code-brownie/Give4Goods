@@ -12,27 +12,26 @@ app = Flask(__name__)
 # Enable CORS for the specified origin
 CORS(
     app,
-    origins="https://give4-goods.vercel.app",
+    resources={r"/process_image": {"origins": "https://give4-goods.vercel.app"}},
     supports_credentials=True,
-    methods=["POST"],
+    methods=["POST", "OPTIONS"],
     allow_headers=["Content-Type"],
 )
-# CORS(
-#     app,
-#     origins="http://localhost:3000",
-#     supports_credentials=True,
-#     methods=["POST"],
-#     allow_headers=["Content-Type"],
-# )
-
 
 torch.hub._validate_not_a_forked_repo = lambda a, b, c: True
 model = torch.hub.load("ultralytics/yolov5", "yolov5s", pretrained=True)
 model.eval()
 
-
-@app.route("/process_image", methods=["POST"])
+@app.route("/process_image", methods=["POST", "OPTIONS"])
 def process_image():
+    if request.method == "OPTIONS":
+        # Respond to OPTIONS preflight request
+        response = jsonify({"status": "ok"})
+        response.headers.add("Access-Control-Allow-Origin", "https://give4-goods.vercel.app")
+        response.headers.add("Access-Control-Allow-Methods", "POST")
+        response.headers.add("Access-Control-Allow-Headers", "Content-Type")
+        return response, 200
+
     try:
         if "image" not in request.files:
             return jsonify({"error": "No image file provided"}), 400
@@ -51,17 +50,13 @@ def process_image():
         print(processing_time)
 
         response = jsonify(data)
-        # response.headers.add("Access-Control-Allow-Origin", "http://localhost:3000")
         response.headers.add("Access-Control-Allow-Origin", "https://give4-goods.vercel.app")
-        response.headers.add("Access-Control-Allow-Methods", "POST")
-        response.headers.add("Access-Control-Allow-Headers", "Content-Type")
         print(response)
         return response, 200
 
     except Exception as e:
         print(f"An error occurred: {str(e)}")
         return jsonify({"error": "Internal server error"}), 500
-
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Flask app exposing yolov5 models")
