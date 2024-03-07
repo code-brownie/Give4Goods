@@ -8,6 +8,8 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 
 app = Flask(__name__)
+
+# Enable CORS for the specified origin
 CORS(app, origins="https://give4-goods.vercel.app", supports_credentials=True)
 
 
@@ -18,23 +20,26 @@ model.eval()
 
 @app.route("/process_image", methods=["POST"])
 def process_image():
-    if "image" not in request.files:
-        return jsonify({"error": "No image file provided"})
+    try:
+        if "image" not in request.files:
+            return jsonify({"error": "No image file provided"}), 400  # 400 Bad Request
 
-    image_file = request.files["image"]
-    img_bytes = image_file.read()
-    img = Image.open(io.BytesIO(img_bytes))
-    start_time = time.time()
+        image_file = request.files["image"]
+        img_bytes = image_file.read()
+        img = Image.open(io.BytesIO(img_bytes))
 
-    # Use the locally defined model
-    results = model([img])
+        start_time = time.time()
+        results = model([img])
+        end_time = time.time()
 
-    end_time = time.time()
-    processing_time = end_time - start_time
-    data = results.pandas().xyxy[0].to_json(orient="records")
-    print(processing_time)
+        processing_time = end_time - start_time
+        data = results.pandas().xyxy[0].to_json(orient="records")
+        print(processing_time)
 
-    return jsonify(data)
+        return jsonify(data), 200  # 200 OK
+
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500  # 500 Internal Server Error
 
 
 if __name__ == "__main__":
