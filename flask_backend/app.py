@@ -18,7 +18,7 @@ def process_image():
     if request.method == "OPTIONS":
         # Respond to OPTIONS preflight request
         response = jsonify({"status": "ok"})
-        response.headers.add("Access-Control-Allow-Origin", "https://give4-goods.vercel.app")
+        response.headers.add("Access-Control-Allow-Origin", "*")
         response.headers.add("Access-Control-Allow-Methods", "POST")
         response.headers.add("Access-Control-Allow-Headers", "Content-Type")
         return response, 200
@@ -41,7 +41,7 @@ def process_image():
         print(processing_time)
 
         response = jsonify(data)
-        response.headers.add("Access-Control-Allow-Origin", "https://give4-goods.vercel.app")
+        response.headers.add("Access-Control-Allow-Origin", "*")
         print(response)
         return response, 200
 
