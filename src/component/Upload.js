@@ -23,6 +23,7 @@ function Upload(props) {
             const response = await fetch('https://give4goods-python-server.onrender.com/process_image', {
                 method: 'POST',
                 body: formData,
+                mode: 'cors'
             });
 
             const data = await response.json();
