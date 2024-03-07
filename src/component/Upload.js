@@ -13,33 +13,46 @@ function Upload(props) {
     };
     const handleSubmit = async (event) => {
         event.preventDefault();
-        if (selectedFile === null) showMessage_danger('please upload an image');
+        if (selectedFile === null) {
+            showMessage_danger('Please upload an image');
+            return;
+        }
+
         console.log("The image is sent");
         const formData = new FormData();
         formData.append('image', selectedFile);
 
         try {
+             const response = await fetch('https://give4goods-python-server.onrender.com/process_image', {
             // const response = await fetch('http://localhost:8000/process_image', {
-            const response = await fetch('https://give4goods-python-server.onrender.com/process_image', {
                 method: 'POST',
                 body: formData,
-                mode: 'cors'
             });
 
             const data = await response.json();
-            if (data[0].name === props.name.toLowerCase()) {
-                handleFoundProduct(true)
-                showMessage_success('Verified Successfully!');
-            }
-            else {
-                showMessage_danger('Please Upload Again!');
-                handleFoundProduct(false)
+
+            if (data.length > 0) {
+                const firstObject = data[0];
+                console.log('First object:', firstObject);
+                const nameFromData = firstObject.name;
+                console.log(nameFromData);
+                if (nameFromData.toLowerCase() === props.name.toLowerCase()) {
+                    handleFoundProduct(true);
+                    showMessage_success('Verified Successfully!');
+                } else {
+                    showMessage_danger('Please Upload Again!');
+                    handleFoundProduct(false);
+                }
+            } else {
+                showMessage_danger('No data received from the server');
+                handleFoundProduct(false);
             }
         } catch (error) {
             console.error(error);
         }
         setLabelText('Upload Image');
     };
+
 
 
     return (
