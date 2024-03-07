@@ -8,7 +8,7 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 
 app = Flask(__name__)
-CORS(app, origins="https://give4-goods.vercel.app")
+CORS(app, origins="https://give4-goods.vercel.app",supports_credentials=True)
 
 # Function to load the YOLOv5 model
 def load_yolov5_model():
