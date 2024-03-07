@@ -8,24 +8,20 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 
 app = Flask(__name__)
-CORS(app, origins="https://give4-goods.vercel.app",supports_credentials=True)
+CORS(app, origins="https://give4-goods.vercel.app", supports_credentials=True)
 
-# Function to load the YOLOv5 model
-def load_yolov5_model():
-    torch.hub._validate_not_a_forked_repo = lambda a, b, c: True
-    model = torch.hub.load('ultralytics/yolov5', 'yolov5s', pretrained=True)
-    model.eval()
-    return model
 
-@app.route('/process_image', methods=['POST'])
+torch.hub._validate_not_a_forked_repo = lambda a, b, c: True
+model = torch.hub.load("ultralytics/yolov5", "yolov5s", pretrained=True)
+model.eval()
+
+
+@app.route("/process_image", methods=["POST"])
 def process_image():
-    if 'image' not in request.files:
-        return jsonify({'error': 'No image file provided'})
+    if "image" not in request.files:
+        return jsonify({"error": "No image file provided"})
 
-    # Load the model inside the route
-    model = load_yolov5_model()
-
-    image_file = request.files['image']
+    image_file = request.files["image"]
     img_bytes = image_file.read()
     img = Image.open(io.BytesIO(img_bytes))
     start_time = time.time()
@@ -39,6 +35,7 @@ def process_image():
     print(processing_time)
 
     return jsonify(data)
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Flask app exposing yolov5 models")
