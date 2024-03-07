@@ -16,3 +16,4 @@ pandas
 ipython  
 psutil  
 thop>=0.1.1  
+gunicorn

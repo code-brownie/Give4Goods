@@ -13,7 +13,6 @@ torch.hub._validate_not_a_forked_repo = lambda a, b, c: True
 model = torch.hub.load("ultralytics/yolov5", "yolov5s", pretrained=True)
 model.eval()
 
-
 @app.route("/process_image", methods=["POST", "OPTIONS"])
 def process_image():
     if request.method == "OPTIONS":
@@ -22,6 +21,7 @@ def process_image():
         response.headers.add(
             "Access-Control-Allow-Origin", "https://give4-goods.vercel.app"
         )
+        response.headers.add("Access-Control-Allow-Origin", "*")
         response.headers.add("Access-Control-Allow-Methods", "POST")
         response.headers.add("Access-Control-Allow-Headers", "Content-Type")
         return response, 200
@@ -44,9 +44,13 @@ def process_image():
         print(processing_time)
 
         response = jsonify(data)
+
         response.headers.add(
             "Access-Control-Allow-Origin", "https://give4-goods.vercel.app"
         )
+
+        response.headers.add("Access-Control-Allow-Origin", "*")
+
         print(response)
         return response, 200
 
